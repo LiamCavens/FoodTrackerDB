@@ -3,6 +3,7 @@ package models;
 import javax.persistence.*;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,7 +24,7 @@ public class Day {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -32,7 +33,7 @@ public class Day {
         this.id = id;
     }
 
-    @Column(name="date")
+    @Column(name = "date")
     public GregorianCalendar getDate() {
         return date;
     }
@@ -50,17 +51,15 @@ public class Day {
         this.meals = meals;
     }
 
-    public void addMeal(Meal meal){
+    public void addMeal(Meal meal) {
         this.meals.add(meal);
     }
 
-    public int calculateDailyCalories(){
+    public int calculateDailyCalories() {
         int result = 0;
-        for(Meal meal : meals){
+        for (Meal meal : meals) {
             result += meal.calculateTotalCalories();
         }
         return result;
     }
-
-   // public List<Food>
 }

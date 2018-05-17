@@ -28,21 +28,4 @@ public class DBDay {
         }
         return results;
     }
-
-    public static List<Food> getFoodFromDay(Day day) {
-        session = HibernateUtil.getSessionFactory().openSession();
-        List<Meal> meals = getMealFromDay(day);
-        List<Food> results = null;
-        try {
-            Criteria criteria = session.createCriteria(Day.class);
-            results = criteria.list();
-        } catch (HibernateException e) {
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return results;
-    }
-
-
 }
