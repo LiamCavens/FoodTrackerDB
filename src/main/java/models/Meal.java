@@ -2,6 +2,7 @@ package models;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -78,5 +79,25 @@ public class Meal {
 
     public void setDay(Day day) {
         this.day = day;
+    }
+
+    public int calculateCaloriesFromFoods(){
+        int result = 0;
+        for(Food food : this.food){
+            result += food.getCalories();
+        }
+        return result;
+    }
+
+    public int calculateCaloriesFromDrinks(){
+        int result = 0;
+        for(Drink drink : this.drinks){
+            result += drink.getCalories();
+        }
+        return result;
+    }
+
+    public int calculateTotalCalories(){
+        return calculateCaloriesFromDrinks() + calculateCaloriesFromFoods();
     }
 }

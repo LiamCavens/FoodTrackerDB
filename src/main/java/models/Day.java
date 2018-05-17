@@ -49,4 +49,18 @@ public class Day {
     public void setMeals(Set<Meal> meals) {
         this.meals = meals;
     }
+
+    public void addMeal(Meal meal){
+        this.meals.add(meal);
+    }
+
+    public int calculateDailyCalories(){
+        int result = 0;
+        for(Meal meal : meals){
+            result += meal.calculateTotalCalories();
+        }
+        return result;
+    }
+
+   // public List<Food>
 }

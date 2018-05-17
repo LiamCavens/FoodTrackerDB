@@ -1,5 +1,6 @@
 package db;
 
+import models.Day;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
